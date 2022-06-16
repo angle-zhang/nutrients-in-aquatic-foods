@@ -36,6 +36,12 @@ nutrients %>% mutate(ear_units=gsub("/d", "", units)) %>%
   select(units) %>%
   unique() 
 
+# get median for all species
+median_nutrients = nutrients %>% group_by(sciname, nutrient, sex, age) %>%
+  summarize(median_ear=median(ear_proportion), median_ear_perc=median(ear_perc))
+
+# generate database for median ear values 
+
 # divide value by EAR, RDA (global? , age groups?)
 
 # 2. do a weighted average 
