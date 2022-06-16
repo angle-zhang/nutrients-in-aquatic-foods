@@ -38,9 +38,10 @@ nutrients %>% mutate(ear_units=gsub("/d", "", units)) %>%
 
 # get median for all species
 median_nutrients = nutrients %>% group_by(sciname, nutrient, sex, age) %>%
-  summarize(median_ear=median(ear_proportion), median_ear_perc=median(ear_perc))
+  summarize(median_ear=median(ear_proportion), median_ear_perc=median(ear_perc)) 
 
-# generate database for median ear values 
+# export data 
+write.csv(median_nutrients,"output/median_nutrients.csv", row.names = FALSE)
 
 # divide value by EAR, RDA (global? , age groups?)
 
